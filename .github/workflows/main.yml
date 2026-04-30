@@ -1,0 +1,13 @@
+name: List S3 from Self-Hosted Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  list-buckets:
+    runs-on: self-hosted
+    steps:
+      - name: List S3 Buckets
+        run: aws s3 ls
+        # No credential setup needed!
+        # The EC2 IAM role provides access automatically
