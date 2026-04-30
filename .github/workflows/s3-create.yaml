@@ -1,0 +1,31 @@
+name: Create S3 Bucket
+
+on:
+  workflow_dispatch:
+    inputs:
+      bucket_name:
+        description: 'Name for the S3 bucket'
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  create-bucket:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::501170964283:role/GitHubActions-Role
+          aws-region: ap-south-1
+
+      - name: Create S3 Bucket
+        run: |
+          aws s3 mb s3://${{ github.event.inputs.bucket_name }} --region ap-south-1
+          echo "Bucket ${{ github.event.inputs.bucket_name }} created successfully!"
+
+      - name: Verify Bucket Exists
+        run: aws s3 ls | grep ${{ github.event.inputs.bucket_name }}
