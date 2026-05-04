@@ -1,0 +1,15 @@
+# Fake credentials for testing GitLeaks
+
+AWS_ACCESS_KEY_ID=AKIA123456789EXAMPLE
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+# Generic API key pattern
+API_KEY=sk_test_51H8abcXYZ1234567890abcdef
+
+# Slack token format
+SLACK_TOKEN=xoxb-123456789012-123456789012-abcdefghijklmnopqrstuvwx
+
+# Private key block
+-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASC...
+-----END PRIVATE KEY-----
